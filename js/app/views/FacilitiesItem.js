@@ -5,7 +5,7 @@ define(function (require) {
     var _                   = require('underscore'),
         Backbone            = require('backbone'),
         UsefulFuncs         = require('app/utils/useful_func'),
-        tpl                 = require('text!tpl/NewsItem.html'),
+        tpl                 = require('text!tpl/FacilitiesItem.html'),
         side_nav                = require('text!tpl/SideNav.html'),
         side_template = _.template(side_nav),
         template = _.template(tpl);

@@ -9,21 +9,21 @@ define(function (require) {
         title = "", 
         description = "", 
         pubDate = "", 
-        News = Backbone.Model.extend({  
+        Facilities = Backbone.Model.extend({  
 
         }),
 
         
-        NewsCollection = Backbone.Collection.extend({
+        FacilitiesCollection = Backbone.Collection.extend({
 
-            model: News,
-            //url: 'http://mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=1&format=raw',
+            model: Facilities,
+            //url: 'http://mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=8&format=raw',
             
             //This is used so I can test on a browser. On a device, use the direct link
          
             
             url: function(){
-                    return "/school-proxy.php?type=news";
+                    return "/school-proxy.php?type=facilities";
                  },
             
         
@@ -63,8 +63,8 @@ define(function (require) {
 
 
     return {
-        News: News,
-        NewsCollection: NewsCollection
+        Facilities: Facilities,
+        FacilitiesCollection: FacilitiesCollection
     };
 
 });

@@ -5,7 +5,7 @@ define(function (require) {
     var _                   = require('underscore'),
         Backbone            = require('backbone'),
         UsefulFuncs         = require('app/utils/useful_func'),
-        tpl                 = require('text!tpl/NewsItem.html'),
+        tpl                 = require('text!tpl/ServiceItem.html'),
         side_nav                = require('text!tpl/SideNav.html'),
         side_template = _.template(side_nav),
         template = _.template(tpl);
@@ -64,6 +64,7 @@ define(function (require) {
             var description = this.model.attributes.description;     
             $(description).find('img').each(function(i, obj){
                 
+                    console.log('checking img paths');
 
                     src = $(obj).attr('src');
                     if(src.indexOf('http') === -1){

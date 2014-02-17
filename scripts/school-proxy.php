@@ -17,21 +17,27 @@ if($type=='news'){
     
     
 }
-elseif ($type=='calendar') { 
+elseif ($type=='service') { 
     
-    $xml = file_get_contents('https://www.google.com/calendar/feeds/causewaycompschool@gmail.com/public/full?orderby=starttime&sortorder=ascending&max-results=10&futureevents=true');
+    $xml = file_get_contents('http://mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=6&format=raw');
 
     
  //https://www.google.com/calendar/feeds/mountmercycollegecork@gmail.com/public/full?orderby=starttime&sortorder=ascending&max-results=3&futureevents=true&alt=json
     
 }
-elseif ($type=='albums') { 
+elseif ($type=='facilities') { 
     
-    $xml = file_get_contents('https://picasaweb.google.com/data/feed/api/user/109549185703274185760');
+    $xml = file_get_contents('http://mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=8&format=raw');
 
     
  //https://www.google.com/calendar/feeds/mountmercycollegecork@gmail.com/public/full?orderby=starttime&sortorder=ascending&max-results=3&futureevents=true&alt=json
     
+}
+elseif($type=="calendar"){
+    //https://www.google.com/calendar/feeds/mallowcollegefe@gmail.com/public/full?orderby=starttime&sortorder=ascending&max-results=10&futureevents=true
+ 
+    $xml = file_get_contents('https://www.google.com/calendar/feeds/mallowcollegefe@gmail.com/public/full?orderby=starttime&sortorder=ascending&max-results=10&futureevents=true');
+
 }
 elseif ($type=='photos') { 
     

@@ -10,6 +10,8 @@ define(function (require) {
         calendar,
         deviceModel,
         articles,
+        service,
+        facilities,
         that;
 
     return Backbone.Router.extend({
@@ -18,12 +20,17 @@ define(function (require) {
             "": "getNews",
             "news": "getNews",
             "news-item/:id": "getNewsItem",
+            "service": "getService",
+            "service-item/:id": "getServiceItem",
+            "facilities": "getFacilities",
+            "facilities-item/:id": "getFacilitiesItem",
             "calendar": "getCalendar",
             "calendar-item/:id": "getCalendarItem",
             "map": "getMap",
             "notification": "getNotification",
             "waypay": "getWayPay",
             "article/:id": "getArticle",
+            "contact": "getContact",
             "articles/:project_title": "getArticles",
         },
         
@@ -133,6 +140,84 @@ define(function (require) {
         },
         
         
+        getService: function (id) {
+
+                require(["app/models/service", "app/views/ServiceList"], function (model, ServiceList) {
+
+                    if(typeof(service)==='undefined' || service===null){
+                        service = new model.ServiceCollection();
+
+                        service.fetch({
+                            full_url: false,
+                            success: function (collection) {
+                                Useful.correctView(that.body);
+                                if(Backbone.history.fragment==="" || Backbone.history.fragment==="service"){
+                                    slider.slidePage(new ServiceList({collection: collection, message_count:that.message_count}).$el);                         
+                                }    
+                            }
+                        });
+                    }
+                    else{
+                        Useful.correctView(that.body);
+                        slider.slidePage(new ServiceList({collection: service, message_count:that.message_count}).$el);
+                    }
+
+                });
+                
+            
+
+        },
+        
+        
+        getServiceItem: function (id) {
+            
+            require(["app/views/ServiceItem"], function (ServiceItem) {
+                Useful.correctView(that.body);
+                 slider.slidePage(new ServiceItem({model: service.get(id), message_count:that.message_count}).$el);
+                                 
+            });
+        },
+                
+                
+        getFacilities: function (id) {
+
+                require(["app/models/facilities", "app/views/FacilitiesList"], function (model, FacilitiesList) {
+
+                    if(typeof(facilities)==='undefined' || facilities===null){
+                        facilities = new model.FacilitiesCollection();
+
+                        facilities.fetch({
+                            full_url: false,
+                            success: function (collection) {
+                                Useful.correctView(that.body);
+                                if(Backbone.history.fragment==="" || Backbone.history.fragment==="facilities"){
+                                    slider.slidePage(new FacilitiesList({collection: collection, message_count:that.message_count}).$el);                         
+                                }    
+                            }
+                        });
+                    }
+                    else{
+                        Useful.correctView(that.body);
+                        slider.slidePage(new FacilitiesList({collection: facilities, message_count:that.message_count}).$el);
+                    }
+
+                });
+                
+            
+
+        },
+        
+        
+        getFacilitiesItem: function (id) {
+            
+            require(["app/views/FacilitiesItem"], function (FacilitiesItem) {
+                Useful.correctView(that.body);
+                 slider.slidePage(new FacilitiesItem({model: facilities.get(id), message_count:that.message_count}).$el);
+                                 
+            });
+        },
+        
+        
         getCalendar: function () {
 
             require(["app/models/calendar", "app/views/CalendarList"], function (model, CalendarList) {
@@ -141,7 +226,7 @@ define(function (require) {
                     calendar = new model.CalendarCollection();
                     
                     calendar.fetch({
-                        full_url: true,
+                        full_url: false,
                         success: function (collection) {
                             Useful.correctView(that.body);
                             slider.slidePage(new CalendarList({collection: collection, message_count:that.message_count}).$el);                          
@@ -324,6 +409,15 @@ define(function (require) {
                   }
 
        
+             });
+        },
+        
+        
+        getContact: function () {
+            
+            require(["app/views/Contact"], function (Contact) { 
+                Useful.correctView(that.body);
+                slider.slidePage(new Contact({message_count:that.message_count}).$el);               
              });
         },
                 
