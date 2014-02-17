@@ -1,0 +1,89 @@
+<nav class="side-nav">
+    <div class="topcoat-list__container side-nav__list__container">
+        <h4 class="side-nav__header">Latest News</h4>
+        <div class="clearfix"></div>
+        <ul class="topcoat-list side-nav__list">
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#news" class="side-nav__button nav-links">News</a>
+            </li>
+            
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#articles/<%= project_title %>" class="side-nav__button nav-links">Messages
+                <% 
+                    if(message_count>0){
+                        print('<span id="message-count" class="topcoat-notification" >'+message_count+'</span>');
+                    }
+                    else{
+                        print('<span id="message-count" ></span>');
+                    }
+                %>
+                </a>
+            </li>
+            
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#calendar" class="side-nav__button nav-links">Calendar</a>
+            </li>
+
+        </ul>
+        
+
+        <h4 class="side-nav__header">School</h4>
+        <div class="clearfix"></div>
+        <ul class="topcoat-list side-nav__list">
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#welcome" class="side-nav__button nav-links">Welcome</a>
+            </li>
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#contact" class="side-nav__button nav-links">Contact</a>
+            </li>
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#map" class="side-nav__button nav-links">Our Location</a>
+            </li>
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#albums" class="side-nav__button nav-links">Albums</a>
+            </li>
+        </ul>
+
+        <h4 class="side-nav__header">Curruiculum</h4>
+        <div class="clearfix"></div>
+        <ul class="topcoat-list side-nav__list">
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#junior" class="side-nav__button nav-links">Junior Cycle</a>
+            </li>
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#senior" class="side-nav__button nav-links">Senior Cycle</a>
+            </li>
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#transition" class="side-nav__button nav-links">Transition Year</a>
+            </li>
+        </ul>
+        
+        
+        <h4 class="side-nav__header">Extra Curricular</h4>
+        <div class="clearfix"></div>
+        <ul class="topcoat-list side-nav__list">
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#sport" class="side-nav__button nav-links">Sport</a>
+            </li>
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#other" class="side-nav__button nav-links">Other Activities</a>
+            </li>
+        </ul>
+        
+        <h4 class="side-nav__header">Other</h4>
+        <div class="clearfix"></div>
+        <ul class="topcoat-list side-nav__list">
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#waypay" class="side-nav__button nav-links">Way2Pay</a>
+            </li>
+        </ul>        
+        
+        <h4 class="side-nav__header">App Settings</h4>
+        <div class="clearfix"></div>
+        <ul class="topcoat-list side-nav__list">
+            <li class="topcoat-list__item side-nav__list__item">
+                <a href="#notification" class="side-nav__button nav-links">Push Notifications</a>
+            </li>
+        </ul>
+    </div>
+</nav>
