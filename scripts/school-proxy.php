@@ -57,6 +57,12 @@ elseif($type=="nightcourse"){
         $xml = file_get_contents('http://www.mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=12&format=raw');
     
 }
+elseif($type=="welcome"){
+    
+    //http://www.mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=15&format=raw
+    $xml = file_get_contents('http://www.mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=15&format=raw');
+    
+}
 elseif($type=="calendar"){
     //https://www.google.com/calendar/feeds/mallowcollegefe@gmail.com/public/full?orderby=starttime&sortorder=ascending&max-results=10&futureevents=true
  

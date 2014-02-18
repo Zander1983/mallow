@@ -15,6 +15,7 @@ define(function (require) {
         information,
         daycourse,
         nightcourse,
+        welcome,
         that;
 
     return Backbone.Router.extend({
@@ -40,6 +41,8 @@ define(function (require) {
             "waypay": "getWayPay",
             "article/:id": "getArticle",
             "contact": "getContact",
+            "welcome": "getWelcome",
+            "welcome-item/:id": "getWelcomeItem",
             "articles/:project_title": "getArticles",
         },
         
@@ -326,8 +329,6 @@ define(function (require) {
                     }
 
                 });
-                
-            
 
         },
         
@@ -341,6 +342,41 @@ define(function (require) {
             });
         },
         
+        
+        getWelcome: function (id) {
+
+                require(["app/models/welcome", "app/views/WelcomeList"], function (model, WelcomeList) {
+
+                    if(typeof(welcome)==='undefined' || welcome===null){
+                        welcome = new model.WelcomeCollection();
+
+                        welcome.fetch({
+                            full_url: false,
+                            success: function (collection) {
+                                Useful.correctView(that.body);
+                                slider.slidePage(new WelcomeList({collection: collection, message_count:that.message_count}).$el);                         
+                                
+                            }
+                        });
+                    }
+                    else{
+                        Useful.correctView(that.body);
+                        slider.slidePage(new WelcomeList({collection: welcome, message_count:that.message_count}).$el);
+                    }
+
+                });
+
+        },
+        
+        
+        getWelcomeItem: function (id) {
+            
+            require(["app/views/WelcomeItem"], function (WelcomeItem) {
+                Useful.correctView(that.body);
+                 slider.slidePage(new WelcomeItem({model: welcome.get(id), message_count:that.message_count}).$el);
+                                 
+            });
+        },
         
         getCalendar: function () {
 
