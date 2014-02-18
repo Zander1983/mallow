@@ -18,14 +18,14 @@ define(function (require) {
         InformationCollection = Backbone.Collection.extend({
 
             model: Information,
-            //url: 'http://www.mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=14&format=raw',
+            url: 'http://www.mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=14&format=raw',
             
             //This is used so I can test on a browser. On a device, use the direct link
          
-            
+            /*
             url: function(){
                     return "/school-proxy.php?type=information";
-                 },
+                 },*/
             
         
             parse: function (data) {

@@ -121,7 +121,7 @@ define(function (require) {
                         news = new model.NewsCollection();
 
                         news.fetch({
-                            full_url: false,
+                            full_url: true,
                             success: function (collection) {
                                 Useful.correctView(that.body);
                                 if(Backbone.history.fragment==="" || Backbone.history.fragment==="news"){
@@ -160,7 +160,7 @@ define(function (require) {
                         service = new model.ServiceCollection();
 
                         service.fetch({
-                            full_url: false,
+                            full_url: true,
                             success: function (collection) {
                                 Useful.correctView(that.body);
                                 slider.slidePage(new ServiceList({collection: collection, message_count:that.message_count}).$el);                         
@@ -199,7 +199,7 @@ define(function (require) {
                         information = new model.InformationCollection();
 
                         information.fetch({
-                            full_url: false,
+                            full_url: true,
                             success: function (collection) {
                                 Useful.correctView(that.body);
                                 slider.slidePage(new InformationList({collection: collection, message_count:that.message_count}).$el);                         
@@ -238,7 +238,7 @@ define(function (require) {
                         daycourse = new model.DayCourseCollection();
 
                         daycourse.fetch({
-                            full_url: false,
+                            full_url: true,
                             success: function (collection) {
                                 Useful.correctView(that.body);
                                 slider.slidePage(new DayCourseList({collection: collection, message_count:that.message_count}).$el);                         
@@ -277,7 +277,7 @@ define(function (require) {
                         nightcourse = new model.NightCourseCollection();
 
                         nightcourse.fetch({
-                            full_url: false,
+                            full_url: true,
                             success: function (collection) {
                                 Useful.correctView(that.body);
                                 slider.slidePage(new NightCourseList({collection: collection, message_count:that.message_count}).$el);                         
@@ -315,7 +315,7 @@ define(function (require) {
                         facilities = new model.FacilitiesCollection();
 
                         facilities.fetch({
-                            full_url: false,
+                            full_url: true,
                             success: function (collection) {
                                 Useful.correctView(that.body);
                                 slider.slidePage(new FacilitiesList({collection: collection, message_count:that.message_count}).$el);                         
@@ -351,7 +351,7 @@ define(function (require) {
                         welcome = new model.WelcomeCollection();
 
                         welcome.fetch({
-                            full_url: false,
+                            full_url: true,
                             success: function (collection) {
                                 Useful.correctView(that.body);
                                 slider.slidePage(new WelcomeList({collection: collection, message_count:that.message_count}).$el);                         
@@ -386,7 +386,7 @@ define(function (require) {
                     calendar = new model.CalendarCollection();
                     
                     calendar.fetch({
-                        full_url: false,
+                        full_url: true,
                         success: function (collection) {
                             Useful.correctView(that.body);
                             slider.slidePage(new CalendarList({collection: collection, message_count:that.message_count}).$el);                          

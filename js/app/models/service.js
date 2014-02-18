@@ -18,14 +18,14 @@ define(function (require) {
         ServiceCollection = Backbone.Collection.extend({
 
             model: Service,
-            //url: 'http://mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=6&format=raw',
+            url: 'http://mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=6&format=raw',
             
             //This is used so I can test on a browser. On a device, use the direct link
          
-            
+            /*
             url: function(){
                     return "/school-proxy.php?type=service";
-                 },
+                 },*/
             
         
             parse: function (data) {
