@@ -10,31 +10,30 @@ define(function (require) {
         description = "", 
         pubDate = "", 
 
-        Service = Backbone.Model.extend({  
+        Information = Backbone.Model.extend({  
 
         }),
 
         
-        ServiceCollection = Backbone.Collection.extend({
+        InformationCollection = Backbone.Collection.extend({
 
-            model: Service,
-            //url: 'http://mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=6&format=raw',
+            model: Information,
+            //url: 'http://www.mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=14&format=raw',
             
             //This is used so I can test on a browser. On a device, use the direct link
          
             
             url: function(){
-                    return "/school-proxy.php?type=service";
+                    return "/school-proxy.php?type=information";
                  },
             
         
             parse: function (data) {
 
                 xml = data;
-
               
                 $(xml).find('item').each(function (index) {
-           
+                    
                     title = $(this).find('title').text();
                     
                     description = $(this).find('description').text();
@@ -55,6 +54,7 @@ define(function (require) {
                     
 
             fetch: function (options) {
+        
                 options = options || {};
                 options.dataType = "xml";
                 return Backbone.Collection.prototype.fetch.call(this, options);
@@ -64,8 +64,8 @@ define(function (require) {
 
 
     return {
-        Service: Service,
-        ServiceCollection: ServiceCollection
+        Information: Information,
+        InformationCollection: InformationCollection
     };
 
 });

@@ -33,6 +33,30 @@ elseif ($type=='facilities') {
  //https://www.google.com/calendar/feeds/mountmercycollegecork@gmail.com/public/full?orderby=starttime&sortorder=ascending&max-results=3&futureevents=true&alt=json
     
 }
+elseif($type=="information"){
+
+    //service
+    //http://mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=6&format=raw
+    
+        $xml = file_get_contents('http://www.mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=14&format=raw');
+    
+}
+elseif($type=="daycourse"){
+
+    //service
+    //http://mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=6&format=raw
+    
+        $xml = file_get_contents('http://www.mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=13&format=raw');
+    
+}
+elseif($type=="nightcourse"){
+
+    //service
+    //http://mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=6&format=raw
+    
+        $xml = file_get_contents('http://www.mallowcollege.ie/index.php?option=com_ninjarsssyndicator&feed_id=12&format=raw');
+    
+}
 elseif($type=="calendar"){
     //https://www.google.com/calendar/feeds/mallowcollegefe@gmail.com/public/full?orderby=starttime&sortorder=ascending&max-results=10&futureevents=true
  

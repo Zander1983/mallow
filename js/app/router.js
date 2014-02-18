@@ -12,6 +12,9 @@ define(function (require) {
         articles,
         service,
         facilities,
+        information,
+        daycourse,
+        nightcourse,
         that;
 
     return Backbone.Router.extend({
@@ -22,6 +25,12 @@ define(function (require) {
             "news-item/:id": "getNewsItem",
             "service": "getService",
             "service-item/:id": "getServiceItem",
+            "information": "getInformation",
+            "information-item/:id": "getInformationItem",
+            "daycourse": "getDayCourse",
+            "daycourse-item/:id": "getDayCourseItem",
+            "nightcourse": "getNightCourse",
+            "nightcourse-item/:id": "getNightCourseItem",
             "facilities": "getFacilities",
             "facilities-item/:id": "getFacilitiesItem",
             "calendar": "getCalendar",
@@ -151,9 +160,8 @@ define(function (require) {
                             full_url: false,
                             success: function (collection) {
                                 Useful.correctView(that.body);
-                                if(Backbone.history.fragment==="" || Backbone.history.fragment==="service"){
-                                    slider.slidePage(new ServiceList({collection: collection, message_count:that.message_count}).$el);                         
-                                }    
+                                slider.slidePage(new ServiceList({collection: collection, message_count:that.message_count}).$el);                         
+                                
                             }
                         });
                     }
@@ -178,6 +186,123 @@ define(function (require) {
             });
         },
                 
+            
+        getInformation: function (id) {
+
+                require(["app/models/information", "app/views/InformationList"], function (model, InformationList) {
+                    
+                    if(typeof(information)==='undefined' || information===null){
+                        
+                        information = new model.InformationCollection();
+
+                        information.fetch({
+                            full_url: false,
+                            success: function (collection) {
+                                Useful.correctView(that.body);
+                                slider.slidePage(new InformationList({collection: collection, message_count:that.message_count}).$el);                         
+                                
+                            }
+                        });
+                    }
+                    else{
+                        Useful.correctView(that.body);
+                        slider.slidePage(new InformationList({collection: information, message_count:that.message_count}).$el);
+                    }
+
+                });
+                
+            
+
+        },
+        
+        
+        getInformationItem: function (id) {
+            
+            require(["app/views/InformationItem"], function (InformationItem) {
+                Useful.correctView(that.body);
+                 slider.slidePage(new InformationItem({model: information.get(id), message_count:that.message_count}).$el);
+                                 
+            });
+        },
+         
+            
+        getDayCourse: function (id) {
+
+                require(["app/models/daycourse", "app/views/DayCourseList"], function (model, DayCourseList) {
+                    
+                    if(typeof(daycourse)==='undefined' || daycourse===null){
+                        
+                        daycourse = new model.DayCourseCollection();
+
+                        daycourse.fetch({
+                            full_url: false,
+                            success: function (collection) {
+                                Useful.correctView(that.body);
+                                slider.slidePage(new DayCourseList({collection: collection, message_count:that.message_count}).$el);                         
+                                
+                            }
+                        });
+                    }
+                    else{
+                        Useful.correctView(that.body);
+                        slider.slidePage(new DayCourseList({collection: daycourse, message_count:that.message_count}).$el);
+                    }
+
+                });
+                
+            
+
+        },
+        
+        
+        getDayCourseItem: function (id) {
+            
+            require(["app/views/DayCourseItem"], function (DayCourseItem) {
+                Useful.correctView(that.body);
+                 slider.slidePage(new DayCourseItem({model: daycourse.get(id), message_count:that.message_count}).$el);
+                                 
+            });
+        },
+                
+                
+        getNightCourse: function (id) {
+
+                require(["app/models/nightcourse", "app/views/NightCourseList"], function (model, NightCourseList) {
+                    
+                    if(typeof(nightcourse)==='undefined' || nightcourse===null){
+                        
+                        nightcourse = new model.NightCourseCollection();
+
+                        nightcourse.fetch({
+                            full_url: false,
+                            success: function (collection) {
+                                Useful.correctView(that.body);
+                                slider.slidePage(new NightCourseList({collection: collection, message_count:that.message_count}).$el);                         
+                                
+                            }
+                        });
+                    }
+                    else{
+                        Useful.correctView(that.body);
+                        slider.slidePage(new NightCourseList({collection: nightcourse, message_count:that.message_count}).$el);
+                    }
+
+                });
+                
+            
+
+        },
+        
+        
+        getNightCourseItem: function (id) {
+            
+            require(["app/views/NightCourseItem"], function (NightCourseItem) {
+                Useful.correctView(that.body);
+                 slider.slidePage(new NightCourseItem({model: nightcourse.get(id), message_count:that.message_count}).$el);
+                                 
+            });
+        },
+                
                 
         getFacilities: function (id) {
 
@@ -190,9 +315,8 @@ define(function (require) {
                             full_url: false,
                             success: function (collection) {
                                 Useful.correctView(that.body);
-                                if(Backbone.history.fragment==="" || Backbone.history.fragment==="facilities"){
-                                    slider.slidePage(new FacilitiesList({collection: collection, message_count:that.message_count}).$el);                         
-                                }    
+                                slider.slidePage(new FacilitiesList({collection: collection, message_count:that.message_count}).$el);                         
+                                
                             }
                         });
                     }
