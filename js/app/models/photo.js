@@ -21,7 +21,6 @@ define(function (require) {
 
             model: Photo,
             
-            /*
             url: function(){
                     var link = 'http://api.flickr.com/services/rest/?';
                     link += '&method=flickr.photosets.getPhotos';
@@ -30,14 +29,14 @@ define(function (require) {
                     link += "&photoset_id="+this.photoset_id;
                     
                     return link;
-                 },*/
+                 },
             
             //This is used so I can test on a browser. On a device, use the direct link
            
-           
+           /*
             url: function(){
                     return "/school-proxy.php?type=photos&photoset_id="+this.photoset_id;
-                 },
+                 },*/
             
             initialize: function (models, options) {
                  parsed = [];

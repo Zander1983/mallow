@@ -18,12 +18,13 @@ define(function (require) {
         welcome,
         albums,
         photos,
+        tweets,
         that;
 
     return Backbone.Router.extend({
 
         routes: {
-            "": "getAlbums",
+            "": "getNews",
             "news": "getNews",
             "news-item/:id": "getNewsItem",
             "service": "getService",
@@ -43,7 +44,9 @@ define(function (require) {
             "waypay": "getWayPay",
             "article/:id": "getArticle",
             "contact": "getContact",
+            "facebook": "getFacebook",
             "welcome": "getWelcome",
+            "twitter": "getTweets",
             "albums": "getAlbums",
             "photos/:id": "getPhotos",
             "photo-item/:id": "getPhotoItem",
@@ -432,6 +435,39 @@ define(function (require) {
         },
                 
                 
+        getTweets: function () {
+            //body.removeClass('left-nav');
+            require(["app/models/tweet", "app/views/TweetList"], function (models, TweetList) {
+
+                
+                if(typeof(tweets)==='undefined' || tweets===null){
+                    tweets = new models.TweetCollection(); 
+          
+          
+                    tweets.fetch({
+                        api: true,
+                        headers: {device_id:that.device_id,api_key:that.api_key},
+                        success: function (collection) {
+                            Useful.correctView(that.body);
+                            slider.slidePage(new TweetList({collection: collection,message_count:that.message_count}).$el);
+                        }, 
+                        error: function(){
+                            console.log('failed to get tweets');
+                        }
+                    }); 
+                    
+                    
+                }
+                else{
+                    Useful.correctView(that.body);
+                    slider.slidePage(new TweetList({collection: tweets, message_count:that.message_count}).$el);
+                }
+                                 
+            });
+           
+        },
+                
+                
         getArticle: function (id) {
             // alert('in getArticle');
             require(["app/models/article", "app/views/Article"], function (models, Article) {
@@ -585,7 +621,7 @@ define(function (require) {
                     albums = new model.AlbumCollection();
                     
                     albums.fetch({
-                        full_url: false,
+                        full_url: true,
                         success: function (collection) {
                             Useful.correctView(that.body);
                             slider.slidePage(new AlbumList({collection: collection, message_count:that.message_count}).$el);
@@ -607,7 +643,7 @@ define(function (require) {
                     photos = new model.PhotoCollection([], {photoset_id:id, message_count:that.message_count});
                     
                     photos.fetch({
-                        full_url: false,
+                        full_url: true,
                         success: function (collection) {
                             Useful.correctView(that.body);
                             slider.slidePage(new PhotoList({collection: collection, message_count:that.message_count}).$el);
@@ -631,6 +667,15 @@ define(function (require) {
             require(["app/views/Contact"], function (Contact) { 
                 Useful.correctView(that.body);
                 slider.slidePage(new Contact({message_count:that.message_count}).$el);               
+             });
+        },
+                
+                //getFacebook
+        getFacebook: function () {
+            
+            require(["app/views/Facebook"], function (Facebook) { 
+                Useful.correctView(that.body);
+                slider.slidePage(new Facebook({message_count:that.message_count}).$el);               
              });
         },
                 

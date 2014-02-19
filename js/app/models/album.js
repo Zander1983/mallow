@@ -21,7 +21,7 @@ define(function (require) {
 
             model: Album,
             
-            /*
+            
             url: function(){
                 
                     var link = "http://api.flickr.com/services/rest/?";
@@ -30,12 +30,12 @@ define(function (require) {
                     link += "&user_id=95277676@N06";
                     
                     return link;
-            },*/
+            },
             
-            
+            /*
             url: function(){
                     return "/school-proxy.php?type=albums";
-                 },
+                 },*/
             
         
             parse: function (data) {
