@@ -16,12 +16,14 @@ define(function (require) {
         daycourse,
         nightcourse,
         welcome,
+        albums,
+        photos,
         that;
 
     return Backbone.Router.extend({
 
         routes: {
-            "": "getNews",
+            "": "getAlbums",
             "news": "getNews",
             "news-item/:id": "getNewsItem",
             "service": "getService",
@@ -42,6 +44,9 @@ define(function (require) {
             "article/:id": "getArticle",
             "contact": "getContact",
             "welcome": "getWelcome",
+            "albums": "getAlbums",
+            "photos/:id": "getPhotos",
+            "photo-item/:id": "getPhotoItem",
             "welcome-item/:id": "getWelcomeItem",
             "articles/:project_title": "getArticles",
         },
@@ -572,6 +577,54 @@ define(function (require) {
              });
         },
         
+        getAlbums: function (id) {
+            //body.removeClass('left-nav');
+            require(["app/models/album", "app/views/AlbumList"], function (model, AlbumList) {
+       
+                if(typeof(albums)==='undefined' || albums===null){
+                    albums = new model.AlbumCollection();
+                    
+                    albums.fetch({
+                        full_url: false,
+                        success: function (collection) {
+                            Useful.correctView(that.body);
+                            slider.slidePage(new AlbumList({collection: collection, message_count:that.message_count}).$el);
+                        }
+                    });
+                }
+                else{ 
+                    Useful.correctView(that.body);
+                    slider.slidePage(new AlbumList({collection: albums, message_count:that.message_count}).$el);
+                }
+                            
+            });
+        },
+        
+         getPhotos: function (id) {
+            //body.removeClass('left-nav');
+            require(["app/models/photo", "app/views/PhotoList"], function (model, PhotoList) {
+
+                    photos = new model.PhotoCollection([], {photoset_id:id, message_count:that.message_count});
+                    
+                    photos.fetch({
+                        full_url: false,
+                        success: function (collection) {
+                            Useful.correctView(that.body);
+                            slider.slidePage(new PhotoList({collection: collection, message_count:that.message_count}).$el);
+                        }
+                    });
+                            
+            });
+        },
+        
+        getPhotoItem: function (id) {
+            //body.removeClass('left-nav');
+            require(["app/views/PhotoItem"], function (PhotoItem) {
+                 Useful.correctView(that.body);
+                 slider.slidePage(new PhotoItem({model: photos.get(id), message_count:that.message_count}).$el);
+                           
+            });
+        },
         
         getContact: function () {
             
