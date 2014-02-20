@@ -27,16 +27,22 @@ define(function (require) {
              "click #pay-link"   : "linkClicked",
         },
 
-        linkClicked:function (e) {    
+        linkClicked: function(e){
+    
             e.preventDefault();
-            var url = $(e.currentTarget).attr("rel"); 
-            this.loadURL(url);
-        },
-                
-        loadURL: function (url){
-                navigator.app.loadUrl(url, { openExternal:true });
-                return false; 
-        }     
+    
+            var href = $(e.currentTarget).attr('href');
+            
+            if (window.device.platform == 'android' || window.device.platform == 'Android') {
+                //Android ONLY - ios can you inAppBrowser
+                navigator.app.loadUrl(href, { openExternal:true });
+            
+            }
+            else{
+                window.open(href, '_blank');
+            }
+            
+        },   
 
     });
 
