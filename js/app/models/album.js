@@ -41,12 +41,8 @@ define(function (require) {
             parse: function (data) {
                 xml = data;
                 
-                console.log('in the parse');
-              
                 $(xml).find('photoset').each(function (index) {
                     
-                    console.log('in phottoset');
-      
                     title = $(this).find('title').text();
                     id = $(this).attr('id');                    
                     num_photos = $(this).attr('photos');
