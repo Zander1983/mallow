@@ -24,9 +24,10 @@ define(function (require) {
                 
         events: {
              //"click input": "formationClicked",
-             "click #pay-link"   : "linkClicked",
+            "click #inner-container a"   : 'linkClicked'
         },
-
+        
+        
         linkClicked: function(e){
     
             e.preventDefault();
@@ -42,7 +43,7 @@ define(function (require) {
                 window.open(href, '_blank');
             }
             
-        },   
+        },
 
     });
 
