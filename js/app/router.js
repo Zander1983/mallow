@@ -474,6 +474,7 @@ define(function (require) {
                                
                 if(typeof(articles)==='undefined' || articles===null){
                     
+                    
                     if(typeof(that.device_id)==='undefined' || that.device_id===null){
                         that.setDeviceDetails();
                     }
@@ -504,6 +505,10 @@ define(function (require) {
                     
                 }
                 else{
+                    
+                    console.log('in getArticle() else and device_id is ');
+                    console.log(that.device_id);
+                    
                     var articleView = new Article({model: articles.get(id), 
                                                    device_id:that.device_id,
                                                    api_key:that.api_key,
@@ -532,9 +537,14 @@ define(function (require) {
              
                 if(typeof(articles)==='undefined' || articles===null){
                     
+
+                    
                     if(typeof(that.device_id)==='undefined' || that.device_id===null){
                         that.setDeviceDetails();
                     }
+                    
+                    console.log('in getArticles if and that.device_id is ');
+                    console.log(that.device_id);
                     
                     if(typeof(that.device_id)!=='undefined' && that.device_id!==null){
                        
@@ -545,7 +555,8 @@ define(function (require) {
                             api: true,
                             headers: {device_id:that.device_id,api_key:that.api_key},
                             success: function (collection) {
-
+                                console.log('articles collections length is ');
+                                console.log(collection.length);
                                 Useful.correctView(that.body);
                                 slider.slidePage(new ArticleList({collection: collection,message_count:that.message_count}).$el);
                             }, 

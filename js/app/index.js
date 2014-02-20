@@ -32,8 +32,6 @@ var app = {
      * This should only ever execute once. 
      */
     registerDeviceWithServer: function(reg_id){
- 
-            console.log('in registerDeviceWithServer');
             
             var url = server_url+"/device_api/device";
             //var url = "http://localhost/schoolspace/device_api/device";
@@ -69,8 +67,6 @@ var app = {
     
     
     updateRegId: function(device_id, api_key, reg_id){
-        
-            console.log('in updateRegId');
         
             var url = server_url+"/device_api/device/"+device_id;
    
@@ -150,7 +146,6 @@ var app = {
      */
     onNotificationGCM: function(e) {
       
-        console.log('inn onNotificationGCM');
 
         switch( e.event )
         {
