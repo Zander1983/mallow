@@ -179,7 +179,7 @@ body.left-nav .topcoat-navigation-bar, body.left-nav .main-content {
     left: 0;
     padding-top:4rem;
     width:100%;
-    min-height:950px;
+    min-height:1050px;
     transition: left 0.2s ease-out;
     -webkit-transition: left 0.2s ease-out;
     transform: translate3d(0, 0, 0);

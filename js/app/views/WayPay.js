@@ -4,7 +4,7 @@ define(function (require) {
 
     var _                   = require('underscore'),
         Backbone            = require('backbone'),
-        tpl                 = require('text!tpl/Facebook.html'),
+        tpl                 = require('text!tpl/WayPay.html'),
         side_nav            = require('text!tpl/SideNav.html'),
         side_template       = _.template(side_nav),
         template            = _.template(tpl);
@@ -24,25 +24,19 @@ define(function (require) {
                 
         events: {
              //"click input": "formationClicked",
-            "click #inner-container a"   : 'linkClicked'
+             "click #pay-link"   : "linkClicked",
         },
 
-        linkClicked: function(e){
-    
+        linkClicked:function (e) {    
             e.preventDefault();
-    
-            var href = $(e.currentTarget).attr('href');
-            
-            if (window.device.platform == 'android' || window.device.platform == 'Android') {
-                //Android ONLY - ios can you inAppBrowser
-                navigator.app.loadUrl(href, { openExternal:true });
-            
-            }
-            else{
-                window.open(href, '_blank');
-            }
-            
-        },    
+            var url = $(e.currentTarget).attr("rel"); 
+            this.loadURL(url);
+        },
+                
+        loadURL: function (url){
+                navigator.app.loadUrl(url, { openExternal:true });
+                return false; 
+        }     
 
     });
 
