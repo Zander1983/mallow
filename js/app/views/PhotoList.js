@@ -4,6 +4,7 @@ define(function (require) {
 
     var _                   = require('underscore'),
         Backbone            = require('backbone'),
+        Lazy                = require('jquery.lazyload'),
         tpl                 = require('text!tpl/PhotoList.html'),
         side_nav                = require('text!tpl/SideNav.html'),
         side_template = _.template(side_nav),

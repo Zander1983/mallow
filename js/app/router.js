@@ -549,8 +549,6 @@ define(function (require) {
                             api: true,
                             headers: {device_id:that.device_id,api_key:that.api_key},
                             success: function (collection) {
-                                console.log('articles collections length is ');
-                                console.log(collection.length);
                                 Useful.correctView(that.body);
                                 slider.slidePage(new ArticleList({collection: collection,message_count:that.message_count}).$el);
                             }, 
@@ -652,6 +650,12 @@ define(function (require) {
                         success: function (collection) {
                             Useful.correctView(that.body);
                             slider.slidePage(new PhotoList({collection: collection, message_count:that.message_count}).$el);
+                        
+                            $('img.lazy').lazyload();                            
+                            setTimeout(function(){
+                                $(window).trigger('scroll');
+                            },1000);
+                        
                         }
                     });
                             
