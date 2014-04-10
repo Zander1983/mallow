@@ -33,7 +33,7 @@ var app = {
      */
     registerDeviceWithServer: function(reg_id){
             
-            var url = server_url+"/device_api/device";
+            var url = push_server_url+"/device_api/device";
             //var url = "http://localhost/schoolspace/device_api/device";
            
           
@@ -60,7 +60,7 @@ var app = {
                 error:   function(model, xhr, options){
 
                     console.log('error reggistering, response is : ');
-                    console.log(app.logObject(xhr));
+                    console.log(xhr.responseText);
                 },
             });
     },
@@ -68,7 +68,7 @@ var app = {
     
     updateRegId: function(device_id, api_key, reg_id){
         
-            var url = server_url+"/device_api/device/"+device_id;
+            var url = push_server_url+"/device_api/device/"+device_id;
    
             $.ajax({
                 url: url,
@@ -107,7 +107,7 @@ var app = {
         }
 
     },
-
+            
 
     // result contains any message sent from the plugin call
     successHandler: function(result) {
@@ -178,7 +178,7 @@ var app = {
 
             case 'message':
          
-                window.location.hash = "article/"+e.payload.article_id;
+                window.location.hash = "message/"+e.payload.article_id;
          
                 break;
 
@@ -197,7 +197,8 @@ var app = {
 
         if ( event.article_id )
         {
-            window.location.hash = "article/"+event.article_id;
+            is_push = true;
+            window.location.hash = "message/"+event.article_id;
             //localStorage.payload =// event.payload   
         }
         

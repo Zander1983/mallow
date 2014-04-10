@@ -24,7 +24,7 @@ define(function (require) {
     return Backbone.Router.extend({
 
         routes: {
-            "": "getNews",
+            "": "getHome",
             "news": "getNews",
             "news-item/:id": "getNewsItem",
             "service": "getService",
@@ -42,7 +42,6 @@ define(function (require) {
             "map": "getMap",
             "notification": "getNotification",
             "waypay": "getWayPay",
-            "article/:id": "getArticle",
             "contact": "getContact",
             "facebook": "getFacebook",
             "welcome": "getWelcome",
@@ -52,6 +51,7 @@ define(function (require) {
             "photo-item/:id": "getPhotoItem",
             "welcome-item/:id": "getWelcomeItem",
             "articles/:project_title": "getArticles",
+            "article/:id": "getArticle",
         },
         
         initialize: function() {   
@@ -106,6 +106,20 @@ define(function (require) {
   
            });
 
+        },
+                
+         getHome: function(){
+    
+            require(["app/views/Home"], function (Home) {
+
+                if(is_push===false){
+                    slider.slidePage(new Home().$el);                       
+                }
+                is_push = false;
+
+            });
+            
+    
         },
                 
         setDeviceDetails: function(){
